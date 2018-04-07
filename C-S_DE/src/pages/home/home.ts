@@ -4,6 +4,8 @@ import { AlertController } from 'ionic-angular';
 
 import {Evenement} from '../../model/Evenement'
 
+import * as firebase from 'firebase';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -24,6 +26,12 @@ export class HomePage {
 
     this.Eve = new Evenement("un super truc", "Une description d'enfer !!");
     this.listEvent.push(this.Eve);
+
+
+    const personRefTemp: firebase.database.Reference = 
+      firebase.database().ref(`/User/USERPN`); 
+      var id = Math.random()*10000000000000000000;
+      personRefTemp.set({ID : id });
 
   }
 
