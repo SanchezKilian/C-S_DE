@@ -27,12 +27,12 @@ export class HomePage {
     this.Eve = new Evenement("un super truc", "Une description d'enfer !!");
     this.listEvent.push(this.Eve);
 
-
+/*
     const personRefTemp: firebase.database.Reference = 
       firebase.database().ref(`/User/USERPN`); 
       var id = Math.random()*10000000000000000000;
       personRefTemp.set({ID : id });
-
+*/
   }
 
 
@@ -61,7 +61,7 @@ export class HomePage {
         },
         {
           text: 'Connexion',
-          handler: data => {
+          handler: data => { // verification avec la base de données des identifiants
             if(data.id == "kilian" && data.mdp == "admin"){
               this.notLogged=false;
             }
@@ -80,7 +80,7 @@ export class HomePage {
 
   showAlert() {
     let alert = this.alertCtrl.create({
-      title: 'Erreur d identification',
+      title: 'Erreur d\' identification',
       subTitle: 'Identifiant ou mot de passe incorrect',
       buttons: [
         {
