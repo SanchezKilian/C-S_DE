@@ -24,7 +24,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
 
-    this.Eve = new Evenement("un super truc", "Une description d'enfer !!");
+    //this.Eve = new Evenement("un super truc", "Une description d'enfer !!");
     this.listEvent.push(this.Eve);
 
 /*
