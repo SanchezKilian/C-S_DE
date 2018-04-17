@@ -5,6 +5,9 @@ import { AlertController } from 'ionic-angular';
 import {Evenement} from '../../model/Evenement'
 
 import * as firebase from 'firebase';
+import { Personne } from '../../model/Personne';
+
+import { NouveauComptePage } from '../nouveau-compte/nouveau-compte'
 
 @Component({
   selector: 'page-home',
@@ -24,28 +27,21 @@ export class HomePage {
   private messErr : string ="Identifiant ou mot de passe incorrect, veuillez recommencer"
   private passWord : string;
   private requete : string;
-  
+  private perso : Personne;
+  private idUser : number;
+
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
 
-    //this.Eve = new Evenement("un super truc", "Une description d'enfer !!");
-    this.listEvent.push(this.Eve);
 
-/*
-    const personRefTemp: firebase.database.Reference = 
-      firebase.database().ref(`/User/USERPN`); 
-      var id = Math.random()*10000000000000000000;
-      personRefTemp.set({ID : id });
-*/
   }
 
 
 
 
   logIn(){
-    let prompt = this.alertCtrl.create({
-      title: 'Connexion : ',
-     
+    let prompt = this.alertCtrl.create({   
+      cssClass : 'custom-back',
       message: this.mess1,
       inputs: [
         {
@@ -60,23 +56,23 @@ export class HomePage {
       ],
       buttons: [
         {
-          text: 'Annuler',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
           text: 'Nouveau compte',
           handler: data => {
-            console.log('Nex account clicked');
+            console.log('New account clicked');
             this.NouveauCompte();
           }
         },
         {
           text: 'Connexion',
           handler: data => {
-            if(data.mdp != null){
-              this.requete = "User/USERPN/"+data.id+"/Password" ;
+            if(data.mdp != null || data.id !=""){
+              this.requete = "User/USERIDS/"+data.id+"/id";
+              const getID : firebase.database.Reference = firebase.database().ref(this.requete);
+
+              getID.on('value',PassSnapshot=>{
+              this.idUser = PassSnapshot.val();
+              
+              this.requete = "User/USER/"+this.idUser.toString()+"/password" ;
               const passwordRef : firebase.database.Reference = firebase.database().ref(this.requete);
               passwordRef.on('value',PassSnapshot=>{
               this.passWord = PassSnapshot.val(); 
@@ -99,7 +95,10 @@ export class HomePage {
                 this.mess1 = this. messErr;
                 this.logIn();
               }
-            });}
+            });
+
+              })
+              }
             
           }
         }
@@ -108,8 +107,13 @@ export class HomePage {
     prompt.present();
   }
 
-  NouveauCompte(){
+  logOut(){
+    this.notLogged = true;
+    this.mess1 = "Veuillez entrer vos identifiants de connexion";
+  }
 
+  NouveauCompte(){
+    this.navCtrl.push(NouveauComptePage);
   }
 
 }

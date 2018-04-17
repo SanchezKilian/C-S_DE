@@ -1,13 +1,13 @@
 import { Personne } from "./Personne";
 
 
-export class Administrateur extends Personne{
+export class Administrateur { //extends Personne
 
     private nom : string;
 
 
     constructor( N:string){
-        super();
+        //super();
         this.nom = N;
     }
 }
