@@ -1,9 +1,3 @@
-<!--
-  Generated template for the NouveauComptePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -14,5 +8,41 @@
 
 
 <ion-content padding>
+    <ion-list inset>
 
-</ion-content>
+      <ion-item>
+       <!-- <ion-item name="md-contact" item-start></ion-item> -->
+        <ion-label stacked>Nom :</ion-label>
+        <ion-input type ="text"[(ngModel)]="nom"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Prenom :</ion-label>
+        <ion-input type ="text"[(ngModel)]="prenom"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <!--  <ion-item name="md-at" item-start></ion-item> -->
+        <ion-label stacked>Adresse de contact :</ion-label>
+        <ion-input type="email" [(ngModel)]="mail"></ion-input>
+      </ion-item>
+
+    </ion-list>
+      <ion-item>
+        <ion-label >Asso(s)</ion-label>
+        <ion-select  [(ngModel)]="assos" multiple="true" cancelText="retour" okText="Valider"> <!--  -->
+          <ion-option *ngFor="let asso of listAssos" value="{{asso}}">{{asso}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-content>
+    <ion-footer>
+        <button ion-button large full (click)="inscription(nom,prenom,mail,assos)">S'inscrire</button>
+    </ion-footer>
+      
+
+
+    
+    
+
+
+

@@ -65,7 +65,7 @@ export class HomePage {
         {
           text: 'Connexion',
           handler: data => {
-            if(data.mdp != null || data.id !=""){
+            if(data.mdp != null || data.id !=null || (data.mdp != null && data.id != null)){
               this.requete = "User/USERIDS/"+data.id+"/id";
               const getID : firebase.database.Reference = firebase.database().ref(this.requete);
 
