@@ -7,7 +7,7 @@ export class Personne{
     private nom : string;
     private prenom : string;
     private adherent : boolean;
-    private admin : string;
+    private admin : string;    // 0 = non-admin /// 1 = admin //
     private contact : string;
     private password : string;
     private identifiant : number;
@@ -47,7 +47,7 @@ export class Personne{
     }
     private perso :Personne;
     SaveObjectP(){
-       this.perso = new Personne("az","az",true,"adm","qsd","azer");
+       this.perso = new Personne("az","az",true,"0","qsd","azer");
        this.reference = firebase.database().ref('User/USER/');
        this.reference.set({personne : this.perso});
     }

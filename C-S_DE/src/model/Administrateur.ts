@@ -1,13 +1,17 @@
 import { Personne } from "./Personne";
 
 
-export class Administrateur { //extends Personne
+export class Administrateur extends Personne { 
 
-    private nom : string;
+    
 
 
-    constructor( N:string){
-        //super();
-        this.nom = N;
+    constructor( N : string, p : string, ad : boolean, adm : string, c : string, pass : string){
+        super(N,p,ad,adm,c,pass);
     }
+
+    SaveAccount(){
+        super.SaveAccount();
+    }
+
 }

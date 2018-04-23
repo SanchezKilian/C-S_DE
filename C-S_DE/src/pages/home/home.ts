@@ -24,7 +24,7 @@ export class HomePage {
   /* Variables liées à la connexion de l'utilisateur */
   private notLogged : boolean = true;
   private admin : boolean = false; // utilisateur : false => basique, true => "admin" 
-  private verifAdmin : string; //1 : true, 0 : false
+  private verifAdmin : string = "cc"; //1 : true, 0 : false
   private mess1 : string = "Veuillez entrer vos identifiants de connexion"
   private messErr : string ="Identifiant ou mot de passe incorrect, veuillez recommencer"
   private passWord : string;
@@ -34,7 +34,7 @@ export class HomePage {
 
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams) {
-
+    this.admin = this.navParams.get("admin");
 
 
   }
@@ -68,7 +68,7 @@ export class HomePage {
         {
           text: 'Connexion',
           handler: data => {
-            if(data.mdp != null || data.id !=null || (data.mdp != null && data.id != null)){
+            if(data.mdp != null || data.id !=""){
               this.requete = "User/USERIDS/"+data.id+"/id";
               const getID : firebase.database.Reference = firebase.database().ref(this.requete);
 
@@ -81,7 +81,7 @@ export class HomePage {
               this.passWord = PassSnapshot.val(); 
               if( data.mdp == this.passWord){
                 this.notLogged=false;
-                this.requete = "User/USERPN/"+data.id+"/admin";
+                this.requete = "User/USER/"+this.idUser.toString()+"/admin";
                 const adminRef : firebase.database.Reference = firebase.database().ref(this.requete);
                 adminRef.on('value', PassSnapshot=>{
                   this.verifAdmin = PassSnapshot.val();

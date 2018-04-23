@@ -31,12 +31,18 @@
       <ion-item>
         <ion-label >Asso(s)</ion-label>
         <ion-select  [(ngModel)]="assos" multiple="true" cancelText="retour" okText="Valider"> <!--  -->
-          <ion-option *ngFor="let asso of listAssos" value="{{asso}}">{{asso}}</ion-option>
+          <ion-option *ngFor="let asso of listAssos" value="{{asso}}">{{asso.nom}}</ion-option>
         </ion-select>
       </ion-item>
+
+      <ion-item>
+        <button ion-button *ngIf="modeGerant" (click)="AjouterAssos()">Ajouter votre association</button>
+      </ion-item>
+
     </ion-content>
-    <ion-footer>
+    <ion-footer style="padding-bottom: 10em" text-center>
         <button ion-button large full (click)="inscription(nom,prenom,mail,assos)">S'inscrire</button>
+        <button ion-button clear (click)="pageAdmin()" text-center>Vous êtes gérant d'une association ?</button>
     </ion-footer>
       
 

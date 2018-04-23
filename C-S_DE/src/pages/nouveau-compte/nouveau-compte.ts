@@ -4,6 +4,9 @@ import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Personne } from '../../model/Personne';
 import { HomePage } from '../home/home';
+import { Association } from '../../model/Association';
+import * as firebase from 'firebase';
+import { Administrateur } from '../../model/Administrateur';
 
 /**
  * Generated class for the NouveauComptePage page.
@@ -21,11 +24,25 @@ export class NouveauComptePage {
 
   private listAssos : Array<string> = new Array() ;
   private newP : Personne;
+  private newA : Administrateur;
   private message1 : string = "Veuillez entrer votre mot de passe puis le confirmer: ";
+  private modeGerant : boolean = false;
+  private adherent : boolean = false;
+  private assoc : Association;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public loadingCtrl: LoadingController) {
     this.listAssos.push("Ahora Salsa");
     this.listAssos.push("La Salsita");
+
+    const itemRefM : firebase.database.Reference = firebase.database().ref("Association/Aid");
+    this.listAssos= [];
+    itemRefM.on('value',ItemSnapshot=>{
+      ItemSnapshot.forEach (ItemSnap => {
+        this.listAssos.push(ItemSnap.val());
+        return false;
+      });
+    });
+
   }
 
   ionViewDidLoad() {
@@ -57,8 +74,14 @@ export class NouveauComptePage {
           handler: data => {
             console.log('Valider clicked');
             if(data.mdp1 == data.mdp2){
-              this.newP = new Personne(nom,prenom,true,"",mail,data.mdp1);
-              this.newP.SaveAccount();
+              if(asso.length!=0){this.adherent = true}
+              if(this.modeGerant){
+                this.newA = new Administrateur(nom,prenom,this.adherent,"1",mail,data.mdp1)
+                this.newA.SaveAccount();
+              }else{
+                this.newP = new Personne(nom,prenom,this.adherent,"0",mail,data.mdp1);
+                this.newP.SaveAccount();
+              }
               this.resentLoadingCrescent();
             }
             else{
@@ -82,7 +105,7 @@ export class NouveauComptePage {
 
     loading.present();
       setTimeout(() => {
-        this.navCtrl.push(HomePage);
+        this.navCtrl.push(HomePage,{admin : this.modeGerant});
           }, 1000);
 
           setTimeout(() => {
@@ -91,5 +114,39 @@ export class NouveauComptePage {
       }, 2000);
 
 }
-  
+
+pageAdmin(){
+  this.modeGerant = true;
+}  
+
+AjouterAssos(){
+  let prompt = this.alertCtrl.create({   
+    cssClass : 'custom-back',
+    message: "veuillez entrer le nom de l'association et ...",
+    inputs: [
+      {
+        name: 'nom',
+        placeholder: 'Nom : ',
+        type :'text'
+      }
+    ],
+    
+    buttons: [
+      {
+        text: 'Ajouter',
+        handler: data => {
+          console.log('Ajouter clicked');
+            this.listAssos.push(data.nom);
+            this.assoc = new Association(data.nom);
+            this.assoc.saveAsso();
+          }
+        }
+      
+      
+    ]
+  });
+  prompt.present();
+}
+
+
 }
