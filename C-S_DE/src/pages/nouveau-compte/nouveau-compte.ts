@@ -31,8 +31,7 @@ export class NouveauComptePage {
   private assoc : Association;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,public loadingCtrl: LoadingController) {
-    this.listAssos.push("Ahora Salsa");
-    this.listAssos.push("La Salsita");
+    
 
     const itemRefM : firebase.database.Reference = firebase.database().ref("Association/Aid");
     this.listAssos= [];

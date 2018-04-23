@@ -120,7 +120,7 @@ export class HomePage {
   }
 
   AddEvent(){
-    this.navCtrl.push(CreatEventPage);
+    this.navCtrl.push(CreatEventPage,{user : this.perso});
 
   }
 

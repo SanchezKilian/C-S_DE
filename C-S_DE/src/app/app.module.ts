@@ -9,13 +9,15 @@ import { DatePicker } from '@ionic-native/date-picker';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { NouveauComptePage } from '../pages/nouveau-compte/nouveau-compte'
+import { NouveauComptePage } from '../pages/nouveau-compte/nouveau-compte';
+import { CreatEventPage } from '../pages/creat-event/creat-event';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    NouveauComptePage
+    NouveauComptePage,
+    CreatEventPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { NouveauComptePage } from '../pages/nouveau-compte/nouveau-compte'
   entryComponents: [
     MyApp,
     HomePage,
-    NouveauComptePage
+    NouveauComptePage,
+    CreatEventPage
   ],
   providers: [
     StatusBar,
