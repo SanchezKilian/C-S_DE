@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 
 import {Evenement} from '../../model/Evenement'
@@ -8,6 +8,8 @@ import * as firebase from 'firebase';
 import { Personne } from '../../model/Personne';
 
 import { NouveauComptePage } from '../nouveau-compte/nouveau-compte'
+import { CreatEventPage } from '../creat-event/creat-event'
+
 
 @Component({
   selector: 'page-home',
@@ -31,7 +33,8 @@ export class HomePage {
   private idUser : number;
 
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams) {
+
 
 
   }
@@ -114,6 +117,11 @@ export class HomePage {
 
   NouveauCompte(){
     this.navCtrl.push(NouveauComptePage);
+  }
+
+  AddEvent(){
+    this.navCtrl.push(CreatEventPage);
+
   }
 
 }

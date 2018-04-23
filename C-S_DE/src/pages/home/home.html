@@ -48,12 +48,7 @@
         <ion-fab-list side="top">
             <button ion-fab><ion-icon name="md-log-out" (click)="logOut()"></ion-icon></button>
             <button ion-fab><ion-icon name="md-contact"></ion-icon></button>
-            <button ion-fab style="color:#2a6496" *ngIf="admin"><ion-icon name= "md-add-circle"></ion-icon></button>
+            <button ion-fab style="color:#2a6496" *ngIf="admin"  (click)="AddEvent()"><ion-icon name= "md-add-circle"></ion-icon></button>
         </ion-fab-list>
       </ion-fab>
-
-
-
-
-
 </ion-content>
