@@ -9,7 +9,7 @@ import { Personne } from '../../model/Personne';
 
 import { NouveauComptePage } from '../nouveau-compte/nouveau-compte'
 import { CreatEventPage } from '../creat-event/creat-event'
-
+import { ProfilPage } from '../profil/profil'
 
 @Component({
   selector: 'page-home',
@@ -29,13 +29,12 @@ export class HomePage {
   private messErr : string ="Identifiant ou mot de passe incorrect, veuillez recommencer"
   private passWord : string;
   private requete : string;
-  private perso : Personne;
   private idUser : number;
 
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams) {
     this.admin = this.navParams.get("admin");
-
+    
 
   }
 
@@ -76,6 +75,7 @@ export class HomePage {
               this.idUser = PassSnapshot.val();
               
               this.requete = "User/USER/"+this.idUser.toString()+"/password" ;
+
               const passwordRef : firebase.database.Reference = firebase.database().ref(this.requete);
               passwordRef.on('value',PassSnapshot=>{
               this.passWord = PassSnapshot.val(); 
@@ -112,6 +112,7 @@ export class HomePage {
 
   logOut(){
     this.notLogged = true;
+    this.navCtrl.setRoot(HomePage);
     this.mess1 = "Veuillez entrer vos identifiants de connexion";
   }
 
@@ -120,8 +121,12 @@ export class HomePage {
   }
 
   AddEvent(){
-    this.navCtrl.push(CreatEventPage,{user : this.perso});
+    this.navCtrl.push(CreatEventPage,{userID : this.idUser});
 
+  }
+
+  goProfil(){
+    this.navCtrl.push(ProfilPage,{userID : this.idUser});
   }
 
 }

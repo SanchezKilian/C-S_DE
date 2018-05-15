@@ -32,4 +32,9 @@ export class CreatEventPage {
     console.log('ionViewDidLoad CreatEventPage');
   }
 
+
+  ajouterEvent(){
+    
+  }
+
 }

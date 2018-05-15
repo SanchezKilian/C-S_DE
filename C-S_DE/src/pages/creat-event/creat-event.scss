@@ -1,3 +1,10 @@
 page-creat-event {
+    ion-content{
+        background: linear-gradient(blue, red);
+    }
 
+    ion-input{
+        border: 2px gray;
+        padding: 1em;
+    }
 }

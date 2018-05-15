@@ -75,10 +75,10 @@ export class NouveauComptePage {
             if(data.mdp1 == data.mdp2){
               if(asso.length!=0){this.adherent = true}
               if(this.modeGerant){
-                this.newA = new Administrateur(nom,prenom,this.adherent,"1",mail,data.mdp1)
+                this.newA = new Administrateur(nom,prenom,this.adherent,"1",mail,data.mdp1,asso)
                 this.newA.SaveAccount();
               }else{
-                this.newP = new Personne(nom,prenom,this.adherent,"0",mail,data.mdp1);
+                this.newP = new Personne(nom,prenom,this.adherent,"0",mail,data.mdp1,asso);
                 this.newP.SaveAccount();
               }
               this.resentLoadingCrescent();

@@ -11,13 +11,15 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { NouveauComptePage } from '../pages/nouveau-compte/nouveau-compte';
 import { CreatEventPage } from '../pages/creat-event/creat-event';
+import { ProfilPage } from '../pages/profil/profil';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     NouveauComptePage,
-    CreatEventPage
+    CreatEventPage,
+    ProfilPage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { CreatEventPage } from '../pages/creat-event/creat-event';
     MyApp,
     HomePage,
     NouveauComptePage,
-    CreatEventPage
+    CreatEventPage,
+    ProfilPage
   ],
   providers: [
     StatusBar,
