@@ -1,0 +1,140 @@
+<ion-content padding>
+
+  <div padding>
+<ion-segment [(ngModel)]="pet">
+  <ion-segment-button value="evenement">
+    l'evenement
+  </ion-segment-button>
+  <ion-segment-button value="stages">
+    stages
+  </ion-segment-button>
+  <ion-segment-button value="autre">
+    autre
+  </ion-segment-button>
+</ion-segment>
+</div>
+
+<div [ngSwitch]="pet">
+  <ion-list *ngSwitchCase="'evenement'">
+     <!-- <ion-item>
+
+          <ion-card>
+            <ion-label>Titre de l'événement :</ion-label>
+            <ion-input  type="text" [(ngModel)]="titre"></ion-input>
+          </ion-card>
+
+          <ion-card>
+              <ion-label>Lieu :</ion-label>
+              <ion-input  type="text" [(ngModel)]="lieu"></ion-input>
+            </ion-card>
+
+            <ion-card>
+                <ion-label>Date :</ion-label>
+                <ion-item>
+                    <ion-datetime displayFormat="D/M/YY" pickerFormat="h mm A" [(ngModel)]="date"></ion-datetime>
+                </ion-item>
+               
+              </ion-card>
+
+        </ion-item>
+      -->
+      <ion-item>
+        <ion-thumbnail item-start>
+          Titre de l'événement :
+        </ion-thumbnail>
+        <ion-input  type="text" [(ngModel)]="titre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          Lieu de l'événement :
+        </ion-thumbnail>
+        <ion-input  type="text" [(ngModel)]="lieu"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail item-start>
+          Date de l'événement :
+        </ion-thumbnail>
+        <ion-item>
+          <ion-datetime displayFormat="D/M/YY" pickerFormat="h mm A" [(ngModel)]="date"></ion-datetime>
+      </ion-item>
+      </ion-item>
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'stages'">
+
+
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'tout'">
+
+
+    </ion-list>
+
+</div>
+   <!--
+      <ion-card>
+          <ion-card-title>Informations sur l'événement :</ion-card-title>
+          <ion-card-content>
+            
+          </ion-card-content>
+        </ion-card>
+
+
+      <ion-card>
+        <ion-card-title>Titre de l'événement :</ion-card-title>
+        <ion-card-content>
+            <ion-input  type="text" [(ngModel)]="titre"></ion-input>
+        </ion-card-content>          
+      </ion-card>
+
+      <ion-card>
+          <ion-card-title>Lieu :</ion-card-title>
+          <ion-card-content>
+              <ion-input  type="text" [(ngModel)]="lieu"></ion-input>
+            </ion-card-content>         
+      </ion-card>
+
+      <ion-card>
+        <ion-card-title>Date :</ion-card-title>
+          <ion-card-content>
+              <ion-item>
+          <ion-datetime displayFormat="D/M/YY" pickerFormat="h mm A" [(ngModel)]="date"></ion-datetime>
+        </ion-item>
+      </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+          <ion-card-title>Description :</ion-card-title>
+          <ion-card-content>
+              <ion-textarea  [(ngModel)]="description"></ion-textarea>
+            </ion-card-content>
+      </ion-card>
+
+
+
+
+ 
+    <ion-card>
+      <ion-card-title>Informations sur les stages :</ion-card-title>
+    </ion-card>
+
+
+
+    <ion-card>
+      <ion-card-title>Informations complementaires sur la soirée : </ion-card-title>
+    </ion-card>
+ 
+
+
+    <ion-card>
+      <ion-card-title>Autres informations :</ion-card-title>
+    </ion-card>
+
+-->
+
+<ion-fab right bottom >
+    <ion-icon name="md-add" (click)="ajouterEvent()"></ion-icon>
+</ion-fab>
+
+
+</ion-content>
