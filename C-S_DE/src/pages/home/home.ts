@@ -111,8 +111,8 @@ export class HomePage {
   }
 
   logOut(){
+    console.log("deconnexion");
     this.notLogged = true;
-    this.navCtrl.setRoot(HomePage);
     this.mess1 = "Veuillez entrer vos identifiants de connexion";
   }
 
@@ -122,7 +122,6 @@ export class HomePage {
 
   AddEvent(){
     this.navCtrl.push(CreatEventPage,{userID : this.idUser});
-
   }
 
   goProfil(){

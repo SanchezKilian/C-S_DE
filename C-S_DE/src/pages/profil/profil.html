@@ -13,38 +13,86 @@
 
 
 <ion-content padding>
-<ion-card>
-  <ion-card-title>
-    Vos informations personnelles : 
-  </ion-card-title>
-  <ion-card-content>
-    <ion-row>
-      <h1>Nom et prénom </h1>
-      <ion-col>
-        <ion-input  type="text" value="{{perso.nom}}"></ion-input>
-      </ion-col>
-      <ion-col>
-          <ion-input  type="text" value="{{perso.prenom}}"></ion-input>
-      </ion-col>
-    </ion-row>
 
-    <ion-row>
-        <h1>Associations</h1>
-        <ion-list  *ngFor="let asso of perso.assos" > 
-          <ion-item>cc {{asso}}</ion-item>
-        </ion-list>
-      </ion-row>
 
-      <ion-row>
-        <h1>mail : </h1>
-          <ion-input  type="mail" value="{{perso.contact}}"></ion-input>
-      </ion-row>
+<ion-grid>
+  <ion-row>
+    <ion-col col-1>
+        <ion-icon name="md-person"></ion-icon>
+       </ion-col>
+       <ion-col col-11>
+          <div>
+              Nom 
+               <ion-input class="rounded"  type="mail" value="{{perso.nom}}" required></ion-input>
+           </div>
+           <div>
+              Prenom
+               <ion-input class="rounded" type="text" value="{{perso.prenom}}"></ion-input>
+           </div>  
+         </ion-col>
 
-      <ion-row>
-        <button ion-button round large dark (click)="editPass()">Modifier votre mot de passe</button>
-      </ion-row>
+  </ion-row>
+</ion-grid>
+  
+  
+           
 
-  </ion-card-content>
-</ion-card>
+
+<ion-grid>
+  <ion-row>
+    <ion-col col-1>
+        <ion-icon name="md-mail"></ion-icon>
+       </ion-col>
+       <ion-col col-11>
+          <div>
+              Mail
+              <ion-input class="rounded" type="mail" value="{{perso.contact}}" required></ion-input>
+          </div>
+         </ion-col>
+  </ion-row>
+</ion-grid>
+
+<p>
+    <button ion-button icon-start round   (click)="editPass()">
+        <ion-icon name="md-lock"></ion-icon>
+        Modifier votre mot de passe
+    </button>
+</p>
+      
+      <ion-grid>
+          <ion-row>
+            <ion-col col-1>
+                <ion-icon name="md-contacts"></ion-icon>
+                
+               </ion-col>
+               <ion-col col-11>
+                  <div>
+                      Associations :
+                      <ion-list  *ngFor="let asso of perso.assos" > 
+                        <ion-item class="roundedAssos"> - {{asso}}</ion-item>
+                      </ion-list>
+                  </div> 
+                  <p class="lien" (click)="addAssos()">
+                    Ajouter une association
+                  </p>
+
+                 </ion-col>
+          </ion-row>
+        </ion-grid>  
+
+<footer>
+    <p>
+        <button ion-button icon-start round   (click)="save()">
+            <ion-icon name="md-create"></ion-icon>
+            Enregistrer les modifications
+        </button>  
+    </p>
+</footer>
+    
+        
+
+      
+
+
 </ion-content>
 
