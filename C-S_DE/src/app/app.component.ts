@@ -27,8 +27,9 @@ export class MyApp {
     authDomain: "d-s-de.firebaseapp.com",
     databaseURL: "https://d-s-de.firebaseio.com",
     projectId: "d-s-de",
-    storageBucket: "",
+    storageBucket: "d-s-de.appspot.com",
     messagingSenderId: "259045726337"
+
     };
     firebase.initializeApp(config);
     

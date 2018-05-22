@@ -1,0 +1,86 @@
+<!--
+  Generated template for the InfoEventPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{event.title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+  <ion-grid>
+    <ion-row>
+         <ion-col col-12>
+            <div>
+                {{event.description}}
+             </div>
+           </ion-col>
+  
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-1>
+          <ion-icon name="md-calendar"></ion-icon>
+         </ion-col>
+         <ion-col col-11>
+            <div>
+              {{event.date}}
+             </div>
+             <div>
+              {{event.heure}}
+             </div>  
+           </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-1>
+          <ion-icon name="md-pin"></ion-icon>
+         </ion-col>
+         <ion-col col-11>
+            <div>
+              {{event.ville}}
+             </div>
+             <div>
+              {{event.adresse}}
+             </div>  
+           </ion-col>
+    </ion-row>
+  </ion-grid>
+
+<!--
+  <ion-grid>
+    <ion-row>
+         <ion-col col-12>
+            <div>
+               Tarif de la soirée : {{event. {{event.tarifs}}}}
+             </div>
+           </ion-col>
+    </ion-row>
+  </ion-grid>
+-->
+
+<ion-grid>
+ <!-- <ion-row let listeStage from event.stages> -->
+    <ion-col let STage from  event.stages>
+      <ion-card>
+        <ion-card-title>{{event.stages.theme}}</ion-card-title>
+      </ion-card>
+    </ion-col>
+
+  <!--</ion-row>-->
+</ion-grid>
+
+
+</ion-content>
