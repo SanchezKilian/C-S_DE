@@ -1,5 +1,6 @@
 import * as firebase from 'firebase';
 import {Administrateur} from '../model/Administrateur'
+import { Stage } from './Stage';
 
 export class Evenement {
 
@@ -12,6 +13,7 @@ export class Evenement {
     private heure : Date;
     private tarifs : number;
     private admin : Administrateur;
+    public stages : Stage[] ;
 
     private idEvent : number;
 
@@ -31,6 +33,8 @@ export class Evenement {
         this.tarifs = t;
         this.admin = Ad;
         this.idEvent = Math.random()*100000000000000000;
+        this.stages = new Array<Stage>();
+        
     }
 
 
@@ -56,5 +60,13 @@ export class Evenement {
     }
     public getDescription(){
         return this.description;
+    }
+
+    public getStages(){
+        return this.stages;
+    }
+    public addStage(S ){
+        this.stages.push(S);
+        
     }
 }

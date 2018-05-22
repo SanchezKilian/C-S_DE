@@ -10,6 +10,8 @@ import { Personne } from '../../model/Personne';
 import { NouveauComptePage } from '../nouveau-compte/nouveau-compte'
 import { CreatEventPage } from '../creat-event/creat-event'
 import { ProfilPage } from '../profil/profil'
+import { InfoEventPage } from '../info-event/info-event';
+import { Administrateur } from '../../model/Administrateur';
 
 @Component({
   selector: 'page-home',
@@ -35,7 +37,8 @@ export class HomePage {
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams) {
     this.admin = this.navParams.get("admin");
     
-
+    this.Eve = new Evenement("title","un evenement",new Date(2018,6,16),"Le Mans","Sun7bar",new Date(21,0),8,new Administrateur("Ahora Salsa","coucou",true,"Ahora Salsa","azertyuiop","a",[]));
+this.listEvent.push(this.Eve);
   }
 
 
@@ -126,6 +129,22 @@ export class HomePage {
 
   goProfil(){
     this.navCtrl.push(ProfilPage,{userID : this.idUser});
+  }
+
+  participer(event){
+    if(this.notLogged){
+      this.logIn();
+      
+      if(!this.notLogged){
+        this.navCtrl.push(InfoEventPage,{userID : this.idUser,event : event});
+      }
+    }else{
+      this.navCtrl.push(InfoEventPage,{userID : this.idUser,event : event});
+    }
+
+  }
+  seeMore(event){
+    this.navCtrl.push(InfoEventPage,{userID : null,event : event});
   }
 
 }

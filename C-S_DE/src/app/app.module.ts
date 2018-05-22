@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { NouveauComptePage } from '../pages/nouveau-compte/nouveau-compte';
 import { CreatEventPage } from '../pages/creat-event/creat-event';
 import { ProfilPage } from '../pages/profil/profil';
+import { InfoEventPage } from '../pages/info-event/info-event';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProfilPage } from '../pages/profil/profil';
     HomePage,
     NouveauComptePage,
     CreatEventPage,
-    ProfilPage
+    ProfilPage,
+    InfoEventPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { ProfilPage } from '../pages/profil/profil';
     HomePage,
     NouveauComptePage,
     CreatEventPage,
-    ProfilPage
+    ProfilPage,
+    InfoEventPage
   ],
   providers: [
     StatusBar,

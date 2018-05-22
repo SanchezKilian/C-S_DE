@@ -5,12 +5,12 @@ export class Stage{
 
     private heure : Date;
     private theme : string;
-    private niveau : string;
+    private niveau : string;  // trois choix possibles
     private intervenant : Administrateur;
     private adresse : string;
     private prix : number;
     private idStage : number;
-
+    
 
     constructor(h : Date, T : string, N : string, I : Administrateur, A : string, P : number){
         
