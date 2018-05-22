@@ -21,6 +21,8 @@ export class ProfilPage {
   public userID : string;
 
   private requete : string;
+  private assos : any;
+  private listAssos : Array<string> = new Array() ;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
     this.perso = new Personne("wx","wx",true,"0","wx","wx",["az","qs"]);
@@ -81,5 +83,44 @@ export class ProfilPage {
     });
     prompt.present();
   }
+
+  addAssos(){
+    const itemRefM : firebase.database.Reference = firebase.database().ref("Association/Aid");
+    this.listAssos= [];
+    itemRefM.on('value',ItemSnapshot=>{
+      ItemSnapshot.forEach (ItemSnap => {
+        this.listAssos.push(ItemSnap.val());
+        return false;
+      });
+    });
+
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Which planets have you visited?');
+
+    if(this.listAssos.length>=1){
+      this.listAssos.forEach(asso =>{
+        alert.addInput({
+          type: 'checkbox',
+          label: asso,
+          value: asso,
+          checked: false
+        });
+      });
+    }
+
+
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'Okay',
+      handler: data => {
+        console.log('Checkbox data:', data);
+       this.assos = data;
+      }
+    });
+    alert.present();
+  }
+
+  
 
 }

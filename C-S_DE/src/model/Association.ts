@@ -3,7 +3,7 @@ import * as firebase from 'firebase';
 export class Association{
 
     /* parametre de l'assocoation */
-    private nom : string;
+    public nom : string;
     private identifiant : number;
 
      /* construction des requetes */
