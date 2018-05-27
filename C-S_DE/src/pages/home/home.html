@@ -9,17 +9,19 @@
 </ion-header>
 
 <ion-content class="card-background-page">
-
+  c{{taille}}c
 
   <ion-card *ngFor="let event of listEvent">
     <ion-item class="card-title">
-      {{event.getTitle()}}
+     {{event.titre}}
     </ion-item>
     <ion-item >Image à venir</ion-item>
 
     <ion-card-content >
-      <ion-item class="card-description">
-        {{event.getDescription()}}
+      <ion-item class="card-description" >
+          
+          {{event.description}}
+     
       </ion-item>
     </ion-card-content>
     <ion-row>

@@ -34,11 +34,31 @@ export class HomePage {
   private idUser : number;
 
 
+  private messagesRef;
+  private database;
+  private disp;
+
+private taille : Number;
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams) {
     this.admin = this.navParams.get("admin");
     
-    this.Eve = new Evenement("title","un evenement",new Date(2018,6,16),"Le Mans","Sun7bar",new Date(21,0),8,new Administrateur("Ahora Salsa","coucou",true,"Ahora Salsa","azertyuiop","a",[]));
-this.listEvent.push(this.Eve);
+   
+
+    
+
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
+    this.requete = "/Evenement/";
+    const itemRefM : firebase.database.Reference = firebase.database().ref(this.requete);
+   this.listEvent=[];
+    itemRefM.on('value',ItemSnapshot=>{
+      ItemSnapshot.forEach (ItemSnap => {
+        this.listEvent.push(ItemSnap.val());
+        return false;
+      });
+    });
   }
 
 
@@ -147,5 +167,12 @@ this.listEvent.push(this.Eve);
     this.navCtrl.push(InfoEventPage,{userID : null,event : event});
   }
 
+
+
+
+
 }
+
+
+
 

@@ -4,7 +4,10 @@ import { Personne } from '../../model/Personne';
 import { ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 
+import { Evenement } from '../../model/Evenement'
 import * as firebase from 'firebase';
+import { Administrateur } from '../../model/Administrateur';
+import { Association } from '../../model/Association';
 
 /**
  * Generated class for the CreatEventPage page.
@@ -19,7 +22,7 @@ import * as firebase from 'firebase';
   templateUrl: 'creat-event.html',
 })
 export class CreatEventPage {
-
+  private eve : Evenement ;
   private perso : Personne;
 
   @ViewChild(Slides) slides: Slides;
@@ -35,6 +38,12 @@ export class CreatEventPage {
 
   ajouterEvent(){
     
+  }
+
+  Add(Nom: string,Date : Date ,Lieu : string  ,Description : string){
+    
+    this.eve = new Evenement(Nom,Description,Date,"le Mans",Lieu, Date,8,new Administrateur("a","a",true,"adm","c","c",["cc","hey"]));
+    this.eve.save();
   }
 
 }

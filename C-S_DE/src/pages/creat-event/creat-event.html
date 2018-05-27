@@ -8,7 +8,7 @@
 
 
 <ion-content padding="true">
-<ion-list>
+<ion-list no-lines>
   <ion-item>
       <ion-input type="text" placeholder="Nom de l'evenement"  [(ngModel)]="Nom"></ion-input>
   </ion-item>
@@ -17,7 +17,7 @@
 <ion-list>
   <ion-item>
       <ion-icon name="md-time" item-start></ion-icon>
-      <ion-datetime displayFormat="D/M/YY" [(ngModel)]="Date"></ion-datetime>
+      <ion-datetime displayFormat="D/M/YY" placeholder="__/__/__" [(ngModel)]="Date"></ion-datetime>
   </ion-item>
 
   <ion-item>
@@ -25,15 +25,23 @@
       <ion-input type="text" placeholder="Lieu" [(ngModel)]="Lieu"></ion-input>
   </ion-item>
 
-  <ion-item-divider>
-      Item Divider
-    </ion-item-divider>
-    
   <ion-item>
       <ion-icon name="md-information-circle" item-start></ion-icon>
+      <ion-label>Description : </ion-label>
       <ion-textarea  [(ngModel)]="Description"></ion-textarea>
   </ion-item>
 </ion-list>
 
+<!--
 
+  <button ion-fab style="color:#2a6496" *ngIf="admin"  ><ion-icon name= "md-add-circle"></ion-icon></button>
+-->
+
+<ion-fab right bottom >
+  <button (click)="Add(Nom,Date,Lieu,Description)" ion-fab color="dark"><ion-icon name="md-log-in"></ion-icon></button>
+</ion-fab>
+<button ion-button icon-start round   (click)="save()">
+  <ion-icon name="md-create"></ion-icon>
+  Enregistrer les modifications
+</button>  
 </ion-content>
