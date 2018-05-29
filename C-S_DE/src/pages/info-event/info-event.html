@@ -17,6 +17,15 @@
   
   <ion-grid>
     <ion-row>
+      <ion-col col-4>
+          <button ion-button icon-left clear small (click)="participer()">
+              <ion-icon name="checkmark-circle"></ion-icon>
+              <div>Participer</div>
+            </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
          <ion-col col-12>
             <div>
                 {{event.description}}
